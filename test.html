@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <title>test</title>
   <style>
   .red{
@@ -23,6 +24,7 @@
 </body>
 <script src="stab.min.js"></script>
 <script src="stab.event.js"></script>
+<script src="stab.tap.js"></script>
 <script src="stab.ajax.js"></script>
 <script>
 // stab.fn.xx = function(){
@@ -79,20 +81,24 @@ var $ = stab;
 // })
 
 
-// ajax GET
-$.ajax('/README.md?a=1&b=2', function(resp){
-  // console.log(resp)
-})
+// // ajax GET
+// $.ajax('/README.md?a=1&b=2', function(resp){
+//   // console.log(resp)
+// })
 
-// POST
-$.ajax('/README.md', 'a=1&b=2', function(resp){
-  // console.log(resp)
-})
+// // POST
+// $.ajax('/README.md', 'a=1&b=2', function(resp){
+//   // console.log(resp)
+// })
 
-$.ajax('/README.md', {c:3, d:4}, function(resp){
-  // console.log(resp)
-})
+// $.ajax('/README.md', {c:3, d:4}, function(resp){
+//   // console.log(resp)
+// })
 
+
+$('#p1').tap(function(e){
+  console.log(e)
+})
 
 
 

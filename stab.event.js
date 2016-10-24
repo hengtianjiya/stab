@@ -27,7 +27,6 @@
       var id = el._evtId || (el._evtId = _evtId++)
       if (!handlers[id]) handlers[id] = {};
       handlers[id][type] = function(e) {
-    console.log(handlers)
         listener.call(this, e);
         once && _this.off(type, capture);
       };
