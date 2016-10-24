@@ -22,6 +22,7 @@
 </select>
 </body>
 <script src="stab.min.js"></script>
+<script src="stab.event.js"></script>
 <script>
 stab.fn.xx = function(){
   console.log(this)
@@ -61,8 +62,20 @@ console.log(stab('#p1').offset())
 console.log(stab('#p1').attr('class'))
 
 
+// event
+var $ = stab;
+$('select').on('change', function(){
+  alert($('select').val())
+})
 
+$('#p1').on('xxx', function(){
+  console.log(this)
+})
 
+$('#input1').one('input', function(){
+  console.log(this.value)
+  $('#p1').trigger('xxx')
+})
 
 
 
