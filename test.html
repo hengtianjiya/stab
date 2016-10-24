@@ -23,62 +23,75 @@
 </body>
 <script src="stab.min.js"></script>
 <script src="stab.event.js"></script>
+<script src="stab.ajax.js"></script>
 <script>
-stab.fn.xx = function(){
-  console.log(this)
-}
-stab('.p').xx()
-console.log(stab('p'))
-console.log(stab('.p').length)
-var a = stab('#p1')
-console.log(a)
-a.push('xxx');
-console.log(a)
-console.log(a.length)
+// stab.fn.xx = function(){
+//   console.log(this)
+// }
+// stab('.p').xx()
+// console.log(stab('p'))
+// console.log(stab('.p').length)
+// var a = stab('#p1')
+// console.log(a)
+// a.push('xxx');
+// console.log(a)
+// console.log(a.length)
 
-var b = a.prev()
-console.log(a)
-console.log(b)
-console.log(stab('#p2').prev())
+// var b = a.prev()
+// console.log(a)
+// console.log(b)
+// console.log(stab('#p2').prev())
 
-console.log(stab('input').val())
-console.log(stab('input').val('dddd').next());
+// console.log(stab('input').val())
+// console.log(stab('input').val('dddd').next());
 
-console.log(stab('#select1')[0].selectedIndex);
-console.log(stab('#select1')[0].options);
-console.log(stab('#select1').val());
-console.log(stab('#select1').text());
-console.log(stab('#select1').html());
-console.log(stab('#select1').val('hahahaha'));
-console.log(stab('input').val('dddd').next());
+// console.log(stab('#select1')[0].selectedIndex);
+// console.log(stab('#select1')[0].options);
+// console.log(stab('#select1').val());
+// console.log(stab('#select1').text());
+// console.log(stab('#select1').html());
+// console.log(stab('#select1').val('hahahaha'));
+// console.log(stab('input').val('dddd').next());
 
-console.log(stab('#p1').css('background-color'))
-console.log(stab('#p1').addClass('red'))
-console.log(stab('#p1').hasClass('red'))
-console.log(stab('#p1').css('background-color'))
-console.log(stab('#p1').css('background-color:#f0f'))
-console.log(stab('#p1').css('background-color'))
-console.log(stab('#p1').offset())
-console.log(stab('#p1').attr('class'))
+// console.log(stab('#p1').css('background-color'))
+// console.log(stab('#p1').addClass('red'))
+// console.log(stab('#p1').hasClass('red'))
+// console.log(stab('#p1').css('background-color'))
+// console.log(stab('#p1').css('background-color:#f0f'))
+// console.log(stab('#p1').css('background-color'))
+// console.log(stab('#p1').offset())
+// console.log(stab('#p1').attr('class'))
 
 
-// event
+// // event
 var $ = stab;
-$('select').on('change', function(){
-  alert($('select').val())
+// $('select').on('change', function(){
+//   alert($('select').val())
+// })
+
+// $('#p1').on('xxx', function(){
+//   console.log(this)
+// })
+
+// $('#input1').one('input', function(){
+//   console.log(this.value)
+//   $('#p1').trigger('xxx')
+// })
+
+
+// ajax GET
+$.ajax('/README.md?a=1&b=2', function(resp){
+  // console.log(resp)
 })
 
-$('#p1').on('xxx', function(){
-  console.log(this)
+// POST
+$.ajax('/README.md', 'a=1&b=2', function(resp){
+  // console.log(resp)
 })
 
-$('#input1').one('input', function(){
-  console.log(this.value)
-  $('#p1').trigger('xxx')
+$.ajax('/README.md', {c:3, d:4}, function(resp){
+  // console.log(resp)
 })
-
-
-
 
 
 
