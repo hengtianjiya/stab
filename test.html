@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>test</title>
+  <style>
+  .red{
+    background:#f00;
+  }
+  </style>
+</head>
+<body>
+<p class="p" id="p1">p1</p>
+<p class="p" id="p2">p2</p>
+<p class="p" id="p3">p3</p>
+<input type="text" id="input1" value="12313">
+<input type="text" id="input2" value="xxx">
+<select name="" id="select1">
+  <option value="1111">11111</option>
+  <option value="2222">22222</option>
+  <option value="3333">33333</option>
+  <option value="4444">44444</option>
+</select>
+</body>
+<script src="stab.min.js"></script>
+<script>
+stab.fn.xx = function(){
+  console.log(this)
+}
+stab('.p').xx()
+console.log(stab('p'))
+console.log(stab('.p').length)
+var a = stab('#p1')
+console.log(a)
+a.push('xxx');
+console.log(a)
+console.log(a.length)
+
+var b = a.prev()
+console.log(a)
+console.log(b)
+console.log(stab('#p2').prev())
+
+console.log(stab('input').val())
+console.log(stab('input').val('dddd').next());
+
+console.log(stab('#select1')[0].selectedIndex);
+console.log(stab('#select1')[0].options);
+console.log(stab('#select1').val());
+console.log(stab('#select1').text());
+console.log(stab('#select1').html());
+console.log(stab('#select1').val('hahahaha'));
+console.log(stab('input').val('dddd').next());
+
+console.log(stab('#p1').css('background-color'))
+console.log(stab('#p1').addClass('red'))
+console.log(stab('#p1').hasClass('red'))
+console.log(stab('#p1').css('background-color'))
+console.log(stab('#p1').css('background-color:#f0f'))
+console.log(stab('#p1').css('background-color'))
+console.log(stab('#p1').offset())
+console.log(stab('#p1').attr('class'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
