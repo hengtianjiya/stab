@@ -49,51 +49,51 @@ var stab = (function(window, undefined) {
     },
     html: function(html) {
       if (_.isUndefined(html)) return this.length > 0 && this[0].innerHTML;
-      this.map(function(el){
+      this.forEach(function(el){
         el.innerHTML = html
       })
       return this
     },
     append: function(html) {
-      this.map(function(el){
+      this.forEach(function(el){
         el.insertAdjacentHTML('beforeend', html)
       })
       return this
     },
     prepend: function(html) {
-      this.map(function(el){
+      this.forEach(function(el){
         el.insertAdjacentHTML('afterbegin', html)
       })
       return this
     },
     before: function(html) {
-      this.map(function(el){
+      this.forEach(function(el){
         el.insertAdjacentHTML('beforebegin', html)
       })
       return this
     },
     after: function(html) {
-      this.map(function(el){
+      this.forEach(function(el){
         el.insertAdjacentHTML('afterend', html)
       })
       return this
     },
     remove: function() {
-      this.map(function(el){
+      this.forEach(function(el){
         el.parentNode.removeChild(el)
       })
       return this
     },
     text: function(txt) {
       if (_.isUndefined(txt)) return this.length > 0 && this[0].textContent;
-      this.map(function(el){
+      this.forEach(function(el){
         el.textContent = txt
       })
       return this
     },
     val: function(val) {
       if (_.isUndefined(val)) return this.length > 0 && (this[0].tagName == 'SELECT' ? this[0].options[this[0].selectedIndex].value : this[0].value);
-      this.map(function(el){
+      this.forEach(function(el){
         if(el.tagName == 'SELECT') el = el.options[el.selectedIndex]
         el.value = val
       })
@@ -101,13 +101,13 @@ var stab = (function(window, undefined) {
     },
     attr : function(k, v) {
       if (_.isUndefined(v)) return this.length > 0 && this[0].getAttribute(k);
-      this.map(function(el){
+      this.forEach(function(el){
         el.setAttribute(k, v)
       })
       return this
     },
     removeAttr: function(k) {
-      this.map(function(el){
+      this.forEach(function(el){
         el.removeAttribute(k)
       })
       return this
@@ -116,13 +116,13 @@ var stab = (function(window, undefined) {
       return this.length > 0 && this[0].className.indexOf(className) > -1;
     },
     addClass: function(className) {
-      this.map(function(el){
+      this.forEach(function(el){
         el.className += ' ' + className
       })
       return this
     },
     removeClass: function(className) {
-      this.map(function(el){
+      this.forEach(function(el){
         el.className = el.className.replace(className, '')
       })
       return this
@@ -130,7 +130,7 @@ var stab = (function(window, undefined) {
     css: function(css) {
       if (_.isUndefined(css)) return this.length > 0 && this[0].style.cssText
       if (!~css.indexOf(':')) return this.length > 0 && window.getComputedStyle(this[0], null).getPropertyValue(css)
-      this.map(function(el){
+      this.forEach(function(el){
         el.style.cssText += css
       })
       return this
