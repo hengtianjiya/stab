@@ -1,3 +1,11 @@
+;stab.buildUrl = function(params){
+  var _p = [];
+  for(var key in params){
+    _p.push(key + '=' + params[key])
+  }
+
+  return _p.join('&')
+}
 ;stab.ajax = function(url, params, onSuccess, onError) {
 	var type = 'POST';
 
@@ -8,13 +16,7 @@
     type = 'GET'
   }
 
-  if(this.isObject(params)){
-  	var _p = [];
-  	for(var key in params){
-  		_p.push(key + '=' + params[key])
-  	}
-  	params = _p.join('&')
-  }
+  if(this.isObject(params)) params = this.buildUrl(params)
 
 	var xhr = new XMLHttpRequest()
 	xhr.open(type, url, true)
