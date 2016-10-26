@@ -5,7 +5,7 @@ a tiny JavaScript library.
 
 # install
 ```bash
-$ npm install stab --save
+$ npm install xstab --save
 ```
 
 # dev
