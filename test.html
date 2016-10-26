@@ -21,13 +21,23 @@
   <option value="3333">33333</option>
   <option value="4444">44444</option>
 </select>
+<ul id="box"></ul>
 </body>
-<script src="stab.min.js"></script>
+<script src="stab.js"></script>
 <script src="stab.event.js"></script>
 <script src="stab.tap.js"></script>
 <script src="stab.ajax.js"></script>
 <script src="stab.anim.js"></script>
+<script src="stab.router.js"></script>
+<script src="stab.tmpl.js"></script>
+<script type="text/html" id="tpl">
+  {% for(var i in this){ %}
+    <li id="{%=i%}">{%=this[i]%}</li>
+  {% } %}
+</script>
 <script>
+var $ = stab;
+
 // stab.fn.xx = function(){
 //   console.log(this)
 // }
@@ -67,7 +77,7 @@
 
 
 // // event
-var $ = stab;
+
 // $('select').on('change', function(){
 //   alert($('select').val())
 // })
@@ -92,29 +102,61 @@ var $ = stab;
 //   // console.log(resp)
 // })
 
-$.ajax('/README.md', {c:3, d:4}, function(resp){
-  // console.log(resp)
-})
+// $.ajax('/README.md', {c:3, d:4}, function(resp){
+//   // console.log(resp)
+// })
 
 
 // $('#p1').tap(function(e){
 //   console.log(e)
 // })
 
-setTimeout(function(){
-  $('#p1').anim('top:500px;left:500px;', function(){
-    this.anim('top:100px;left:100px;', function(){
-      this.anim('left:300px;background-color:#f00;', function(){
-        console.log(this.css())
-      })
-    }, 1)
-  }, 3)
-}, 1000);
+// setTimeout(function(){
+//   $('#p1').anim('top:500px;left:500px;', function(){
+//     this.anim('top:100px;left:100px;', function(){
+//       this.anim('left:300px;background-color:#f00;', function(){
+//         console.log(this.css())
+//       })
+//     }, 1)
+//   }, 3)
+// }, 1000);
 
 
+// $.router.on('xx', function(){
+//   console.log('router: xx')
+// }).on('index', function(){
+//   console.log('index')
 
+// }).init()
 
+// setTimeout(function(){
+//   location.hash = 'xx';
+// }, 3000)
 
+// tmpl, cp
+var tplStr = $('#tpl').html()
+var tplObj = {aaa: 'aaaaaaa', bbb: 'bbbbbbb', ccc: 'ccccccc', ddd: 'ddddddd'}
+var tplHtml = $.tmpl(tplStr, tplObj)
+console.log(tplHtml)
+
+var xtpl = $('#box').cp(tplStr, tplObj, '#box{color:#f00}', function(){
+  // console.log(this)
+  // console.log(this.data)
+  // console.log(this.html)
+  // console.log(this.caller)
+  // console.log(this.src)
+  var _this = this
+  $('#aaa').on('click', function(){
+    _this.data.aaa = 'click..'
+    _this.update();
+    console.log(_this)
+  })
+})
+console.log(xtpl)
+console.log(xtpl.html)
+
+// console.log($('#p3').prev().prev())
+// console.log($('#p3').prev().next())
 
 </script>
 </html>

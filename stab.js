@@ -2,10 +2,11 @@ var stab = (function(window, undefined) {
   var document = window.document;
 
   var _ = function(selector) {
-    var is_str = _.isString(selector)
-    var nodes = is_str ? document.querySelectorAll(selector) : selector
-    nodes = Array.prototype.slice.call(nodes, 0)
-    nodes.selector = is_str ? selector : ''
+    var nodes = selector
+    try {
+      nodes = Array.prototype.slice.call(document.querySelectorAll(selector), 0)
+      nodes.selector = selector
+    } catch (e) {}
     nodes.__proto__ = _.fn
     return nodes
   }
@@ -23,21 +24,18 @@ var stab = (function(window, undefined) {
   })
 
   _.fn = {
-    beat: function(callback){
-      return this.map(function(el){
-        return callback ? callback(el) : el;
+    prev: function() {
+      return _(this.map(function(el){
+        return el.previousElementSibling || el.previousSibling
       }).filter(function(el){
         return _.isElement(el);
-      })
-    },
-    prev: function() {
-      return _(this.beat(function(el){
-        return el.previousElementSibling || el.previousSibling
       }))
     },
     next: function() {
-      return _(this.beat(function(el){
+      return _(this.map(function(el){
         return el.nextElementSibling || el.nextSibling
+      }).filter(function(el){
+        return _.isElement(el);
       }))
     },
     html: function(html) {
@@ -47,40 +45,16 @@ var stab = (function(window, undefined) {
       })
       return this
     },
-    append: function(html) {
+    text: function(txt) {
+      if (_.isUndefined(txt)) return this.length > 0 && this[0].textContent;
       this.forEach(function(el){
-        el.insertAdjacentHTML('beforeend', html)
-      })
-      return this
-    },
-    prepend: function(html) {
-      this.forEach(function(el){
-        el.insertAdjacentHTML('afterbegin', html)
-      })
-      return this
-    },
-    before: function(html) {
-      this.forEach(function(el){
-        el.insertAdjacentHTML('beforebegin', html)
-      })
-      return this
-    },
-    after: function(html) {
-      this.forEach(function(el){
-        el.insertAdjacentHTML('afterend', html)
+        el.textContent = txt
       })
       return this
     },
     remove: function() {
       this.forEach(function(el){
         el.parentNode.removeChild(el)
-      })
-      return this
-    },
-    text: function(txt) {
-      if (_.isUndefined(txt)) return this.length > 0 && this[0].textContent;
-      this.forEach(function(el){
-        el.textContent = txt
       })
       return this
     },
@@ -142,6 +116,16 @@ var stab = (function(window, undefined) {
     }
   }
   _.fn.__proto__ = Array.prototype
+
+  var insertAdjacentObj = {append: 'beforeend', prepend: 'afterbegin', before: 'beforebegin', after: 'afterend'}
+  for(k in insertAdjacentObj){
+    _.fn[k] = function(html) {
+      this.forEach(function(el){
+        el.insertAdjacentHTML(insertAdjacentObj[k], html)
+      })
+      return this
+    }
+  }
 
   return _;
 })(window);
