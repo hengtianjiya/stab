@@ -1,6 +1,8 @@
 # stab
 a tiny JavaScript library.
 
+# size: 3KB
+
 # install
 ```bash
 $ npm install stab --save
