@@ -1,3 +1,4 @@
+// Tap <= []
 ;stab.fn.tap = function(callback){
   var t;
   this.on('touchstart', function(e){

@@ -1,4 +1,5 @@
-stab.router = (function(){
+// Router <= []
+;stab.router = (function(){
   var _routers = {};
 
   var on = function(k, v){

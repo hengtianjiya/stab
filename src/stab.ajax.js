@@ -1,3 +1,4 @@
+// Ajax <= []
 ;stab.buildUrl = function(params){
   var _p = [];
   for(var key in params){

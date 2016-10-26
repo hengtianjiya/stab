@@ -1,4 +1,4 @@
-var stab = (function(window, undefined) {
+;var stab = (function(window, undefined) {
   var document = window.document;
 
   var _ = function(selector) {

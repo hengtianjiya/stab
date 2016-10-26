@@ -1,5 +1,5 @@
-;
-(function(document, undefined) {
+// Event <= []
+;(function(document, undefined) {
   var handlers = {},
     _evtId = 1;
 

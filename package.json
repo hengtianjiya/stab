@@ -1,0 +1,33 @@
+{
+  "name": "stab",
+  "version": "0.1.1",
+  "keywords": [
+    "stag",
+    "tiny",
+    "mini",
+    "library"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kongge/stab.git"
+  },
+  "scripts": {
+    "build": "gulp",
+    "stab": "gulp stab",
+    "all": "gulp all",
+    "core": "gulp core"
+  },
+  "description": "a tiny JavaScript library",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglifyjs": "^0.6.2",
+    "gulp-size": "^2.1.0"
+  },
+  "author": "kongge",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kongge/stab/issues"
+  },
+  "homepage": "https://github.com/kongge/stab#readme"
+}

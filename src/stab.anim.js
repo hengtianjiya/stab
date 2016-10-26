@@ -1,3 +1,4 @@
+// Anim <= []
 ;stab.cssPrefix = (function(_){
   var body = _('body'), vendor = ['-webkit-', '-moz-', '-o-'];
 
